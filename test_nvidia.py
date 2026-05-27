@@ -1,7 +1,14 @@
 """测试NVIDIA API"""
+import os
 from openai import OpenAI
+from dotenv import load_dotenv
 
-api_key = "***REMOVED***"
+# 加载环境变量
+load_dotenv()
+
+api_key = os.getenv("NVIDIA_API_KEY")
+if not api_key:
+    raise ValueError("请在 .env 文件中设置 NVIDIA_API_KEY")
 
 print("正在测试NVIDIA API...")
 print(f"API密钥: {api_key[:20]}...")
